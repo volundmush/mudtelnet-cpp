@@ -478,7 +478,22 @@ namespace mudtelnet {
     }
 
     void MudTelnet::sendText(const std::string &txt) {
-        TelnetMessage msg {.msg_type=AppData, .data=txt};
+        // Must ensure that all newlines are \r\n as per telnet standard.
+        std::string out;
+        for(auto c : txt ) {
+            switch(c) {
+                case '\r':
+                    break;
+                case '\n':
+                    out += "\r\n";
+                    break;
+                default:
+                    out.push_back(c);
+                    break;
+            }
+        }
+
+        TelnetMessage msg {.msg_type=AppData, .data=out};
         sendMessage(msg);
     }
 
