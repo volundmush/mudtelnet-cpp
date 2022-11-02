@@ -61,8 +61,10 @@ namespace mudtelnet {
     };
 
     enum GameMessageType {
-        TextCommand = 0,
-        JSON = 1
+        Text = 0,
+        Line = 1,
+        Prompt = 2,
+        JSON = 3
     };
 
     struct GameMessage {
