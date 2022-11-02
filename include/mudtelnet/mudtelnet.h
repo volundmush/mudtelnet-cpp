@@ -101,12 +101,6 @@ namespace mudtelnet {
         TrueColor = 3
     };
 
-    enum TextType : uint8_t {
-        Text = 0,
-        Line = 1,
-        Prompt = 2
-    };
-
     struct TelnetCapabilities {
         ColorType colorType = NoColor;
         std::string clientName = "UNKNOWN", clientVersion = "UNKNOWN";
